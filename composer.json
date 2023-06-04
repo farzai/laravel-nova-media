@@ -1,24 +1,25 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "farzai/laravel-nova-media",
+    "description": "This is my package laravel-nova-media",
     "keywords": [
-        ":vendor_name",
+        "farzai",
         "laravel",
-        ":package_slug"
+        "laravel-nova-media"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/farzai/laravel-nova-media",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
-            "role": "Developer"
+            "name": "parsilver",
+            "email": "parkorn@farzai.com"
         }
     ],
     "require": {
         "php": "^8.1",
         "spatie/laravel-package-tools": "^1.14.0",
-        "illuminate/contracts": "^10.0"
+        "spatie/laravel-medialibrary": "^10.0.0",
+        "illuminate/contracts": "^10.0",
+        "laravel/nova": "^4.12"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
@@ -35,13 +36,12 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Farzai\\NovaMedia\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/"
+            "Farzai\\NovaMedia\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -61,13 +61,16 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
-            ],
-            "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
-            }
+                "Farzai\\NovaMedia\\NovaMediaServiceProvider"
+            ]
         }
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true
 }

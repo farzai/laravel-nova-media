@@ -1,10 +1,10 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace Farzai\NovaMedia\Tests;
 
+use Farzai\NovaMedia\NovaMediaServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use VendorName\Skeleton\SkeletonServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -12,15 +12,15 @@ class TestCase extends Orchestra
     {
         parent::setUp();
 
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'VendorName\\Skeleton\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
+        // Factory::guessFactoryNamesUsing(
+        //     fn (string $modelName) => 'Farzai\\NovaMedia\\Database\\Factories\\'.class_basename($modelName).'Factory'
+        // );
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            SkeletonServiceProvider::class,
+            NovaMediaServiceProvider::class,
         ];
     }
 
@@ -28,8 +28,12 @@ class TestCase extends Orchestra
     {
         config()->set('database.default', 'testing');
 
+        // Using package migrations...
+        $migration = include __DIR__.'/../vendor/spatie/laravel-medialibrary/database/migrations/create_media_table.php.stub';
+        $migration->up();
+
         /*
-        $migration = include __DIR__.'/../database/migrations/create_skeleton_table.php.stub';
+        $migration = include __DIR__.'/../database/migrations/create_laravel-nova-media_table.php.stub';
         $migration->up();
         */
     }
